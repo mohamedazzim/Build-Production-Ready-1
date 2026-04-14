@@ -1,0 +1,9 @@
+
+> @workspace/intake-app@0.0.0 dev D:\StrangerThings Season 5\Build-Production-Ready-1\Build-Production-Ready-1\artifacts\intake-app
+> vite --config vite.config.ts --host 0.0.0.0
+
+
+  [32m[1mVITE[22m v7.3.1[39m  [2mready in [0m[1m3620[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m21588[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://172.20.10.2:[1m21588[22m/[39m

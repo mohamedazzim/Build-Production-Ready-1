@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Customer Intake – Cartridge & Ink Shop"
+version = "1.0.0"
+id = "artifacts/intake-app"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21588
+
+[services.development]
+run = "pnpm --filter @workspace/intake-app run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/intake-app", "run", "build" ]
+publicDir = "artifacts/intake-app/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21588"
+BASE_PATH = "/"

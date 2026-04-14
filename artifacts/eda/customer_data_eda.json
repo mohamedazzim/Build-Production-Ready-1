@@ -1,0 +1,358 @@
+{
+  "inputFile": "d:/StrangerThings Season 5/cleaned_customer_intake_records_v3.xlsx",
+  "sheetName": "Sheet1",
+  "totalRows": 3334,
+  "dateRange": {
+    "min": "2000-01-20",
+    "max": "2026-12-03"
+  },
+  "duplicateAnalysis": {
+    "exactDuplicateGroups": 27,
+    "exactDuplicateRows": 72,
+    "repeatedMobileGroups": 465,
+    "repeatedMobileRows": 1153,
+    "repeatedMobileWithNameVariants": 287
+  },
+  "nameQuality": {
+    "firstEqualsLastCount": 2325,
+    "titleLikeNameCount": 62,
+    "embeddedAddressNameCount": 89
+  },
+  "missingFieldCounts": {
+    "first_name": 5,
+    "last_name": 5,
+    "mobile_number": 269,
+    "service_type": 1978,
+    "address": 1804,
+    "printer_make": 2033,
+    "printer_model": 2831,
+    "device_serial_number": 2504,
+    "notes": 2687
+  },
+  "topServices": [
+    {
+      "label": "(blank)",
+      "count": 1978
+    },
+    {
+      "label": "Cartridge Recharge",
+      "count": 737
+    },
+    {
+      "label": "Others",
+      "count": 181
+    },
+    {
+      "label": "Printer Service",
+      "count": 171
+    },
+    {
+      "label": "Printer Repair",
+      "count": 59
+    },
+    {
+      "label": "OEM",
+      "count": 56
+    },
+    {
+      "label": "Computer/Laptop Repair",
+      "count": 43
+    },
+    {
+      "label": "Cartridge",
+      "count": 17
+    },
+    {
+      "label": "Consumables",
+      "count": 12
+    },
+    {
+      "label": "Photo Copy",
+      "count": 12
+    },
+    {
+      "label": "Toner Refill",
+      "count": 10
+    },
+    {
+      "label": "bk",
+      "count": 7
+    }
+  ],
+  "topModels": [
+    {
+      "label": "1020",
+      "count": 59
+    },
+    {
+      "label": "2900",
+      "count": 46
+    },
+    {
+      "label": "1050",
+      "count": 21
+    },
+    {
+      "label": "1005",
+      "count": 13
+    },
+    {
+      "label": "1007",
+      "count": 13
+    },
+    {
+      "label": "1136",
+      "count": 13
+    },
+    {
+      "label": "12A",
+      "count": 11
+    },
+    {
+      "label": "HP INK TANK 419",
+      "count": 11
+    },
+    {
+      "label": "1666",
+      "count": 9
+    },
+    {
+      "label": "3010",
+      "count": 8
+    },
+    {
+      "label": "L220",
+      "count": 6
+    },
+    {
+      "label": "1000",
+      "count": 5
+    }
+  ],
+  "timeDistribution": [
+    {
+      "label": "10:00",
+      "count": 3334
+    }
+  ],
+  "classificationDistribution": [
+    {
+      "label": "unique_record",
+      "count": 2175
+    },
+    {
+      "label": "same_customer_mobile_name_variant",
+      "count": 715
+    },
+    {
+      "label": "repeat_customer_or_repeat_visit",
+      "count": 372
+    },
+    {
+      "label": "exact_duplicate_candidate",
+      "count": 72
+    }
+  ],
+  "sampleProblemRows": [
+    {
+      "rowNumber": 2,
+      "displayNameOriginal": "MR",
+      "displayNameRefined": "MR",
+      "mobileNormalized": "9629627553",
+      "serviceTypeRefined": "Ink Refill",
+      "serviceDate": "2025-10-10",
+      "classification": "same_customer_mobile_name_variant",
+      "flags": "first_equals_last, title_like_first_name, repeat_mobile_number, same_mobile_multiple_name_variants"
+    },
+    {
+      "rowNumber": 3,
+      "displayNameOriginal": "RAM",
+      "displayNameRefined": "RAM",
+      "mobileNormalized": "9566945202",
+      "serviceTypeRefined": "Toner Refill",
+      "serviceDate": "2025-10-14",
+      "classification": "same_customer_mobile_name_variant",
+      "flags": "first_equals_last, repeat_mobile_number, same_mobile_multiple_name_variants"
+    },
+    {
+      "rowNumber": 5,
+      "displayNameOriginal": "RANJITH",
+      "displayNameRefined": "RANJITH",
+      "mobileNormalized": "9786522042",
+      "serviceTypeRefined": "Toner Refill",
+      "serviceDate": "2025-10-15",
+      "classification": "same_customer_mobile_name_variant",
+      "flags": "first_equals_last, repeat_mobile_number, same_mobile_multiple_name_variants"
+    },
+    {
+      "rowNumber": 6,
+      "displayNameOriginal": "GOPI",
+      "displayNameRefined": "GOPI",
+      "mobileNormalized": "9894773194",
+      "serviceTypeRefined": "Printer Repair",
+      "serviceDate": "2025-10-15",
+      "classification": "unique_record",
+      "flags": "first_equals_last"
+    },
+    {
+      "rowNumber": 9,
+      "displayNameOriginal": "RAMKUMAR",
+      "displayNameRefined": "RAMKUMAR",
+      "mobileNormalized": "9566945202",
+      "serviceTypeRefined": "Photo Copy",
+      "serviceDate": "2025-10-15",
+      "classification": "same_customer_mobile_name_variant",
+      "flags": "first_equals_last, repeat_mobile_number, same_mobile_multiple_name_variants"
+    },
+    {
+      "rowNumber": 10,
+      "displayNameOriginal": "VIJAY",
+      "displayNameRefined": "VIJAY",
+      "mobileNormalized": "9626546488",
+      "serviceTypeRefined": "Printer Repair",
+      "serviceDate": "2025-11-19",
+      "classification": "unique_record",
+      "flags": "first_equals_last"
+    },
+    {
+      "rowNumber": 12,
+      "displayNameOriginal": "LION DATES",
+      "displayNameRefined": "LION DATES",
+      "mobileNormalized": "9787291176",
+      "serviceTypeRefined": "Printer Repair",
+      "serviceDate": "2025-10-24",
+      "classification": "same_customer_mobile_name_variant",
+      "flags": "repeat_mobile_number, same_mobile_multiple_name_variants"
+    },
+    {
+      "rowNumber": 13,
+      "displayNameOriginal": "LION DATES",
+      "displayNameRefined": "LION DATES",
+      "mobileNormalized": "9787291176",
+      "serviceTypeRefined": "Printer Repair",
+      "serviceDate": "2025-10-17",
+      "classification": "same_customer_mobile_name_variant",
+      "flags": "repeat_mobile_number, same_mobile_multiple_name_variants"
+    },
+    {
+      "rowNumber": 14,
+      "displayNameOriginal": "LION DATES",
+      "displayNameRefined": "LION DATES",
+      "mobileNormalized": "9787291176",
+      "serviceTypeRefined": "Printer Repair",
+      "serviceDate": "2025-10-24",
+      "classification": "same_customer_mobile_name_variant",
+      "flags": "repeat_mobile_number, same_mobile_multiple_name_variants"
+    },
+    {
+      "rowNumber": 15,
+      "displayNameOriginal": "RRS",
+      "displayNameRefined": "RRS",
+      "mobileNormalized": "9842445173",
+      "serviceTypeRefined": "Printer Repair",
+      "serviceDate": "2025-10-22",
+      "classification": "same_customer_mobile_name_variant",
+      "flags": "first_equals_last, repeat_mobile_number, same_mobile_multiple_name_variants"
+    },
+    {
+      "rowNumber": 16,
+      "displayNameOriginal": "MR.FRANKLIN",
+      "displayNameRefined": "MR.FRANKLIN",
+      "mobileNormalized": "6374803543",
+      "serviceTypeRefined": "Computer/Laptop Repair",
+      "serviceDate": "2025-10-22",
+      "classification": "unique_record",
+      "flags": "first_equals_last"
+    },
+    {
+      "rowNumber": 17,
+      "displayNameOriginal": "KARATE SANKAR",
+      "displayNameRefined": "KARATE SANKAR",
+      "mobileNormalized": "9787699736",
+      "serviceTypeRefined": "Photo Copy",
+      "serviceDate": "2025-10-24",
+      "classification": "same_customer_mobile_name_variant",
+      "flags": "repeat_mobile_number, same_mobile_multiple_name_variants"
+    },
+    {
+      "rowNumber": 19,
+      "displayNameOriginal": "LION DATES IMPEX PVT LTD",
+      "displayNameRefined": "LION DATES IMPEX PVT LTD",
+      "mobileNormalized": "9787291176",
+      "serviceTypeRefined": "Photo Copy",
+      "serviceDate": "2025-10-24",
+      "classification": "same_customer_mobile_name_variant",
+      "flags": "repeat_mobile_number, same_mobile_multiple_name_variants"
+    },
+    {
+      "rowNumber": 20,
+      "displayNameOriginal": "LION DATES IMPEX PVT LTD",
+      "displayNameRefined": "LION DATES IMPEX PVT LTD",
+      "mobileNormalized": "9787291176",
+      "serviceTypeRefined": "Toner Refill",
+      "serviceDate": "2025-10-24",
+      "classification": "same_customer_mobile_name_variant",
+      "flags": "repeat_mobile_number, same_mobile_multiple_name_variants"
+    },
+    {
+      "rowNumber": 21,
+      "displayNameOriginal": "ANBAGAM",
+      "displayNameRefined": "ANBAGAM",
+      "mobileNormalized": "7598470928",
+      "serviceTypeRefined": "Toner Refill",
+      "serviceDate": "2025-10-24",
+      "classification": "unique_record",
+      "flags": "first_equals_last"
+    },
+    {
+      "rowNumber": 22,
+      "displayNameOriginal": "C.NARESH KUMAR",
+      "displayNameRefined": "C.NARESH KUMAR",
+      "mobileNormalized": "9994204749",
+      "serviceTypeRefined": "Photo Copy",
+      "serviceDate": "2025-10-24",
+      "classification": "same_customer_mobile_name_variant",
+      "flags": "repeat_mobile_number, same_mobile_multiple_name_variants"
+    },
+    {
+      "rowNumber": 23,
+      "displayNameOriginal": "ANOSH KUMAR",
+      "displayNameRefined": "ANOSH KUMAR",
+      "mobileNormalized": "8807913494",
+      "serviceTypeRefined": "Printer Repair",
+      "serviceDate": "2025-10-27",
+      "classification": "repeat_customer_or_repeat_visit",
+      "flags": "repeat_mobile_number"
+    },
+    {
+      "rowNumber": 24,
+      "displayNameOriginal": "ANOSH KUMAR",
+      "displayNameRefined": "ANOSH KUMAR",
+      "mobileNormalized": "8807913494",
+      "serviceTypeRefined": "Printer Repair",
+      "serviceDate": "2025-10-28",
+      "classification": "repeat_customer_or_repeat_visit",
+      "flags": "repeat_mobile_number"
+    },
+    {
+      "rowNumber": 25,
+      "displayNameOriginal": "PRADHEEP",
+      "displayNameRefined": "PRADHEEP",
+      "mobileNormalized": "9443076226",
+      "serviceTypeRefined": "Photo Copy",
+      "serviceDate": "2025-10-28",
+      "classification": "repeat_customer_or_repeat_visit",
+      "flags": "first_equals_last, repeat_mobile_number"
+    },
+    {
+      "rowNumber": 26,
+      "displayNameOriginal": "PRADHEEP",
+      "displayNameRefined": "PRADHEEP",
+      "mobileNormalized": "9443076226",
+      "serviceTypeRefined": "Printer Repair",
+      "serviceDate": "2025-10-28",
+      "classification": "repeat_customer_or_repeat_visit",
+      "flags": "first_equals_last, repeat_mobile_number"
+    }
+  ]
+}
