@@ -494,10 +494,14 @@ function parseImportRow(row: SpreadsheetRow, rowNumber: number): ParsedImportRow
   );
 
   if (
-    (serviceType === "Laptop/Computer Service" || serviceType === "Computer/Laptop Repair") &&
+    (
+      serviceType === "Laptop/Computer Service" ||
+      serviceType === "Computer/Laptop Repair" ||
+      serviceType === "Printer Service"
+    ) &&
     !deviceSerialNumber
   ) {
-    errors.push("Device serial number is required for Laptop/Computer Service");
+    errors.push("Device serial number is required for Laptop/Computer Service and Printer Service");
   }
 
   if (errors.length > 0) {

@@ -4,7 +4,7 @@ Use this checklist when setting up the app on a fresh machine.
 
 ## Step 1: Clone and Install
 
-```bash
+```powershell
 git clone <your-repo-url>
 cd Build-Production-Ready-1
 pnpm install
@@ -16,6 +16,13 @@ Copy and edit:
 
 - artifacts/api-server/.env.example -> artifacts/api-server/.env
 - artifacts/intake-app/.env.example -> artifacts/intake-app/.env
+
+PowerShell copy commands:
+
+```powershell
+Copy-Item .\artifacts\api-server\.env.example .\artifacts\api-server\.env
+Copy-Item .\artifacts\intake-app\.env.example .\artifacts\intake-app\.env
+```
 
 Minimum values:
 
@@ -55,7 +62,7 @@ ALTER USER postgres WITH PASSWORD 'postgres';
 
 ## Step 4: Apply Schema
 
-```bash
+```powershell
 pnpm --filter ./lib/db run push
 ```
 
@@ -63,14 +70,14 @@ pnpm --filter ./lib/db run push
 
 Terminal 1 (API):
 
-```bash
+```powershell
 pnpm --filter ./artifacts/api-server run build
 pnpm --filter ./artifacts/api-server run start
 ```
 
 Terminal 2 (Frontend):
 
-```bash
+```powershell
 pnpm --filter ./artifacts/intake-app run dev
 ```
 
@@ -82,6 +89,11 @@ pnpm --filter ./artifacts/intake-app run dev
 
 ## Step 7: Optional Production Build Check
 
-```bash
+```powershell
 pnpm run build
 ```
+
+## Windows Notes
+
+- All setup commands in this guide are PowerShell-friendly.
+- Use Windows Terminal or PowerShell 7+ for best compatibility.
