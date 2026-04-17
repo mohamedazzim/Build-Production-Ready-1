@@ -19,11 +19,16 @@ function Assert-CommandAvailable {
 function Ensure-EnvFile {
   param(
     [string]$Source,
-    [string]$Destination
+    [string]$Destination,
+    [string]$DefaultContent
   )
 
   if (-not (Test-Path $Destination)) {
-    Copy-Item $Source $Destination
+    if (Test-Path $Source) {
+      Copy-Item $Source $Destination
+    } else {
+      Set-Content -Path $Destination -Value $DefaultContent -NoNewline
+    }
   }
 }
 
@@ -62,11 +67,27 @@ Write-Host "[1/6] Verifying toolchain..."
 Assert-CommandAvailable "pnpm"
 
 Write-Host "[2/6] Preparing environment files..."
-Ensure-EnvFile -Source $apiEnvExample -Destination $apiEnv
-Ensure-EnvFile -Source $appEnvExample -Destination $appEnv
+Ensure-EnvFile -Source $apiEnvExample -Destination $apiEnv -DefaultContent @"
+PORT=5000
+DATABASE_URL=postgresql://postgres:data@127.0.0.1:5432/janus_intake
+LOCAL_DATABASE_URL=postgresql://postgres:data@127.0.0.1:5432/janus_intake
+LOG_LEVEL=info
+"@
+
+Ensure-EnvFile -Source $appEnvExample -Destination $appEnv -DefaultContent @"
+PORT=5173
+BASE_PATH=/
+VITE_API_BASE_URL=http://localhost:5000
+"@
 
 Set-Or-ReplaceEnvVar -FilePath $apiEnv -Key "DATABASE_URL" -Value "postgresql://postgres:data@127.0.0.1:5432/janus_intake"
 Set-Or-ReplaceEnvVar -FilePath $apiEnv -Key "LOCAL_DATABASE_URL" -Value "postgresql://postgres:data@127.0.0.1:5432/janus_intake"
+Set-Or-ReplaceEnvVar -FilePath $apiEnv -Key "PORT" -Value "5000"
+Set-Or-ReplaceEnvVar -FilePath $apiEnv -Key "LOG_LEVEL" -Value "info"
+
+Set-Or-ReplaceEnvVar -FilePath $appEnv -Key "PORT" -Value "5173"
+Set-Or-ReplaceEnvVar -FilePath $appEnv -Key "BASE_PATH" -Value "/"
+Set-Or-ReplaceEnvVar -FilePath $appEnv -Key "VITE_API_BASE_URL" -Value "http://localhost:5000"
 
 Write-Host "[3/6] Ensuring local database exists..."
 $env:PGPASSWORD = "data"
