@@ -1,5 +1,7 @@
 # Workspace
 
+⚠️ **WINDOWS ONLY**: This application is configured exclusively for Windows platforms. See [WINDOWS_DEPLOYMENT.md](WINDOWS_DEPLOYMENT.md) for details.
+
 ## Overview
 
 pnpm workspace monorepo using TypeScript. Each package manages its own dependencies.

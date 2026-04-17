@@ -1,6 +1,8 @@
 # New Local Machine Bootstrap
 
-Use this checklist when setting up the app on a fresh machine.
+⚠️ **WINDOWS REQUIRED**: This application runs on Windows only. See [WINDOWS_DEPLOYMENT.md](WINDOWS_DEPLOYMENT.md) for platform requirements and constraints.
+
+Use this checklist when setting up the app on a fresh Windows machine.
 
 ## Step 1: Clone and Install
 
@@ -91,6 +93,26 @@ pnpm --filter ./artifacts/intake-app run dev
 
 ```powershell
 pnpm run build
+```
+
+## Quick Automation Scripts (Windows)
+
+Run the full first-time setup (expects local PostgreSQL password `data`):
+
+```powershell
+pnpm --filter @workspace/scripts run first-time-setup
+```
+
+Start backend and frontend in one click (opens 2 PowerShell windows):
+
+```powershell
+pnpm --filter @workspace/scripts run start-dev
+```
+
+Force-restart both services (kills current listeners on ports 5000 and 5173, then starts fresh):
+
+```powershell
+pnpm --filter @workspace/scripts run start-dev:force
 ```
 
 ## Windows Notes
