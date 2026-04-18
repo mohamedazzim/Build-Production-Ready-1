@@ -120,9 +120,9 @@ export default function ImportRecordsPage() {
     <Layout>
       <div className="flex flex-col gap-8">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight text-gray-900">Import Excel</h2>
+          <h2 className="text-2xl font-bold tracking-tight text-gray-900">Import Spreadsheet</h2>
           <p className="text-muted-foreground mt-1">
-            Upload either the legacy customer workbook or the cleaned snake_case sheet.
+            Upload Excel or CSV files using either the legacy workbook headers or the cleaned snake_case headers.
           </p>
         </div>
 
@@ -147,7 +147,7 @@ export default function ImportRecordsPage() {
                 style={{ backgroundColor: "#FFD400", borderColor: "#FFD400" }}
               >
                 {isParsing ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Upload className="w-4 h-4 mr-2" />}
-                Choose Excel File
+                Choose File (.xlsx, .xls, .csv)
               </Button>
 
               <Button

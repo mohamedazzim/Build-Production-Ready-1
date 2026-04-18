@@ -133,6 +133,83 @@ export type ParsedWorkbook = {
   previewRows: ParsedImportRow[];
 };
 
+type WorkbookScore = {
+  workbook: xlsx.WorkBook;
+  score: number;
+};
+
+function getWorkbookScore(workbook: xlsx.WorkBook): number {
+  const sheetName = workbook.SheetNames[0];
+  const sheet = workbook.Sheets[sheetName];
+  if (!sheet) return -1;
+
+  const matrix = xlsx.utils.sheet_to_json<(string | number | null)[]>(sheet, {
+    header: 1,
+    defval: null,
+    blankrows: false,
+    raw: false,
+  });
+
+  if (matrix.length === 0) return 0;
+
+  const headerWidth = (matrix[0] ?? []).filter((cell) => cell !== null && String(cell).trim() !== "").length;
+  const dataRows = Math.max(matrix.length - 1, 0);
+
+  // Prioritize files with clear multi-column headers and actual data rows.
+  return dataRows * 100 + headerWidth;
+}
+
+function decodeCsvText(fileBuffer: ArrayBuffer): string {
+  const bytes = new Uint8Array(fileBuffer);
+  const utf8 = new TextDecoder("utf-8", { fatal: false }).decode(bytes);
+
+  // UTF-16 CSVs often include many NUL bytes when read as UTF-8.
+  if (utf8.includes("\u0000")) {
+    return new TextDecoder("utf-16le", { fatal: false }).decode(bytes);
+  }
+
+  return utf8;
+}
+
+function readWorkbookWithCsvFallback(fileName: string, fileBuffer: ArrayBuffer): xlsx.WorkBook {
+  const baseWorkbook = xlsx.read(fileBuffer, { type: "array", cellDates: true });
+  const isCsv = /\.csv$/i.test(fileName);
+
+  if (!isCsv) {
+    return baseWorkbook;
+  }
+
+  const csvText = decodeCsvText(fileBuffer);
+  const delimiterCandidates = [",", ";", "\t", "|"];
+  const scoredWorkbooks: WorkbookScore[] = [
+    {
+      workbook: baseWorkbook,
+      score: getWorkbookScore(baseWorkbook),
+    },
+  ];
+
+  for (const delimiter of delimiterCandidates) {
+    try {
+      const parsed = xlsx.read(csvText, {
+        type: "string",
+        cellDates: true,
+        raw: false,
+        FS: delimiter,
+      });
+
+      scoredWorkbooks.push({
+        workbook: parsed,
+        score: getWorkbookScore(parsed),
+      });
+    } catch {
+      // Ignore parser attempts that fail and continue evaluating other delimiters.
+    }
+  }
+
+  scoredWorkbooks.sort((a, b) => b.score - a.score);
+  return scoredWorkbooks[0].workbook;
+}
+
 function normalizeKey(value: string): string {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, "");
 }
@@ -537,7 +614,7 @@ function parseImportRow(row: SpreadsheetRow, rowNumber: number): ParsedImportRow
 }
 
 export function parseWorkbookFile(fileName: string, fileBuffer: ArrayBuffer): ParsedWorkbook {
-  const workbook = xlsx.read(fileBuffer, { type: "array", cellDates: true });
+  const workbook = readWorkbookWithCsvFallback(fileName, fileBuffer);
   const sheetName = workbook.SheetNames[0];
   const sheet = workbook.Sheets[sheetName];
 
