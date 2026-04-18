@@ -13,13 +13,20 @@ import { getGetAnalyticsQueryKey, getGetRecordsQueryKey, type CreateIntakeRecord
 import { parseWorkbookFile, type ParsedWorkbook } from "@/lib/intake-import";
 
 const IMPORT_BATCH_SIZE = 100;
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || (import.meta.env.DEV ? "http://localhost:5000" : "");
+
+function resolveApiUrl(path: string): string {
+  if (!API_BASE_URL) return path;
+  return `${API_BASE_URL.replace(/\/+$/, "")}${path.startsWith("/") ? path : `/${path}`}`;
+}
 
 type ImportBatchResponse = {
   imported: number;
 };
 
 async function importRecordBatch(records: CreateIntakeRecord[]): Promise<ImportBatchResponse> {
-  const response = await fetch("/api/records/import", {
+  const response = await fetch(resolveApiUrl("/api/records/import"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
